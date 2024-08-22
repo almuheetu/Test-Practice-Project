@@ -9,7 +9,9 @@ import java.util.ArrayList
 
 class StudentAdapter(
     private val studentList: ArrayList<Student>
+
 ) : RecyclerView.Adapter<StudentAdapter.ViewHolder>() {
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val studentName: TextView
         val studentId: TextView
@@ -21,20 +23,17 @@ class StudentAdapter(
     }
 
     override fun onCreateViewHolder(
-        viewGroup: ViewGroup,
-        viewType: Int
+        viewGroup: ViewGroup, viewType: Int
     ): ViewHolder {
         val view =
-            LayoutInflater.from(viewGroup.context)
-                .inflate(R.layout.student_list, viewGroup, false)
+            LayoutInflater.from(viewGroup.context).inflate(R.layout.student_list, viewGroup, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(
-        viewHolder: ViewHolder,
-        position: Int
+        viewHolder: ViewHolder, position: Int
     ) {
-            val student = studentList[position]
+        val student = studentList[position]
         viewHolder.studentName.text = student.name
         viewHolder.studentId.text = student.id
     }
@@ -45,3 +44,4 @@ class StudentAdapter(
 
 
 }
+
