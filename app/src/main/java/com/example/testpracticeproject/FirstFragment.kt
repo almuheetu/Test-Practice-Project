@@ -11,10 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 class FirstFragment : Fragment() {
     private lateinit var adapter: StudentAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

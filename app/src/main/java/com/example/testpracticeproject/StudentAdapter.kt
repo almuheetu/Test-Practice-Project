@@ -7,8 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class StudentAdapter(
-    studentList: ArrayList<Student>
-) : RecyclerView.Adapter<StudentAdapter.ViewHolder>() {
+    private val studentList: ArrayList<Student>
+) :
+    RecyclerView.Adapter<StudentAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val studentName: TextView
         val studentId: TextView
@@ -28,13 +29,13 @@ class StudentAdapter(
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        return studentList.size
-    }
-
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val student = studentList[position]
         viewHolder.studentName.text = student.name
         viewHolder.studentId.text = student.id
+    }
+
+    override fun getItemCount(): Int {
+        return studentList.size
     }
 }
