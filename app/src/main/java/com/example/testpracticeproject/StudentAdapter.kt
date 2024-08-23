@@ -1,5 +1,7 @@
 package com.example.testpracticeproject
 
+import android.health.connect.changelog.ChangeLogsResponse.DeletedLog
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,28 +15,40 @@ class StudentAdapter(
 
 ) : RecyclerView.Adapter<StudentAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(
+        binding: StudentListBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
         val studentName: TextView
         val studentId: TextView
 
+
         init {
-            studentName = view.findViewById(R.id.tv_student_carName)
-            studentId = view.findViewById(R.id.tv_student_id)
+            studentName = binding.tvStudentCarName
+            studentId = binding.tvStudentId
         }
+
     }
 
     override fun onCreateViewHolder(
-        viewGroup: ViewGroup, viewType: Int
+        viewGroup: ViewGroup,
+        viewType: Int
     ): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.student_list, viewGroup, false)
-        return ViewHolder(view)
+
+        val bindding =
+            StudentListBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+
+        return ViewHolder(bindding)
     }
 
     override fun onBindViewHolder(
-        viewHolder: ViewHolder, position: Int
+        viewHolder: ViewHolder,
+        position: Int
     ) {
+
         val student = studentList[position]
+        //viewHolder.binding.tvStudentCarName.text = student.name
+
         viewHolder.studentName.text = student.name
         viewHolder.studentId.text = student.id
     }
